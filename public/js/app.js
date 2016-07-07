@@ -1,14 +1,18 @@
 var socket = io();
+var moment = moment();
 
 socket.on('connect', function(){
     console.log('Connected to socket.io server!');
 });
 
 socket.on('message', function(message){
-    console.log('New message recieved:');
-    console.log(message.text);
+    var momentTimestamp = moment.utc(message.timeStamp);
+    //var mytime = momentTimestamp.format('h:mm a');
+    var myMessage = momentTimestamp + ' ' + message.text;
 
-    jQuery('.messages').append('<p>'+ message.text +'</p>')
+    console.log('New message recieved:');
+    console.log(myMessage);
+    jQuery('.messages').append('<p><strong>'+ momentTimestamp.local().format('h:mm a') +':</strong> '+ message.text +'</p>')
 
 });
 
