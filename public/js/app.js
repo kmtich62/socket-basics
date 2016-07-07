@@ -1,7 +1,12 @@
+var name = getQueryVariable('name');
+var room = getQueryVariable('room');
 var socket = io();
+
+console.log(name +' joined '+ room);
 
 socket.on('connect', function(){
     console.log('Connected to socket.io server!');
+    //jQuery('.messages').append(name +' joined '+ room);
 });
 
 socket.on('message', function(message){
