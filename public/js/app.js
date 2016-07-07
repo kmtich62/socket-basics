@@ -2,7 +2,7 @@ var name = getQueryVariable('name');
 var room = getQueryVariable('room');
 var socket = io();
 
-console.log(name +' joined '+ room);
+console.log(name +'wants to join '+ room);
 
 socket.on('connect', function(){
     console.log('Connected to socket.io server!');
