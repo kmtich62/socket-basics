@@ -4,9 +4,15 @@ var socket = io();
 
 console.log(name +'wants to join '+ room);
 
+jQuery('.RoomName').text(room);
+
 socket.on('connect', function(){
     console.log('Connected to socket.io server!');
     //jQuery('.messages').append(name +' joined '+ room);
+    socket.emit('joinRoom', {
+        name: name,
+        room: room
+    });
 });
 
 socket.on('message', function(message){
